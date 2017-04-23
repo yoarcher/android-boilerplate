@@ -3,8 +3,6 @@ package com.example.android.boilerplateapp.dagger;
 import android.app.Application;
 import android.content.Context;
 
-import org.greenrobot.eventbus.EventBus;
-
 import dagger.Module;
 import dagger.Provides;
 
@@ -24,8 +22,4 @@ public class AppModule {
         return application;
     }
 
-    @Provides
-    public EventBus providesEventBus() {
-        return EventBus.getDefault();
-    }
 }
