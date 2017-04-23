@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Boilerplate App</string>
+
+    <string name="no_items">No items to show</string>
+
+    <string name="made_change_format">%s made changes to</string>
+    <string name="repo_name_format">repository %s</string>
+</resources>
