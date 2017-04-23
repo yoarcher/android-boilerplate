@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.text.format.DateUtils" />
+
         <variable
             name="item"
             type="com.example.android.boilerplateapp.data.model.Event" />
@@ -45,6 +47,14 @@
                     android:paddingStart="@dimen/small_padding"
                     android:text="@{@string/made_change_format(item.actor.displayLogin)}"
                     tool:text="Emily" />
+
+                <TextView
+                    android:id="@+id/timestamp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:text="@{DateUtils.getRelativeTimeSpanString(item.createdAt.getTime())}" />
 
                 <TextView
                     android:id="@+id/repo_name"

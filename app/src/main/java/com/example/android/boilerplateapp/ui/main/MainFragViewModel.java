@@ -1,12 +1,10 @@
 package com.example.android.boilerplateapp.ui.main;
 
 import android.databinding.BaseObservable;
-import android.databinding.Bindable;
 import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
 import android.support.annotation.NonNull;
 
-import com.android.databinding.library.baseAdapters.BR;
 import com.example.android.boilerplateapp.MyApplication;
 import com.example.android.boilerplateapp.data.GithubDataRepository;
 import com.example.android.boilerplateapp.data.model.Event;
@@ -29,6 +27,7 @@ public class MainFragViewModel extends BaseObservable {
 
     public final ObservableField<MainAdapter> adapter = new ObservableField<>();
     public final ObservableBoolean dataLoading = new ObservableBoolean(false);
+    public final ObservableBoolean showEmptyMessage = new ObservableBoolean(false);
 
     @Inject
     GithubDataRepository dataRepository;
@@ -41,11 +40,6 @@ public class MainFragViewModel extends BaseObservable {
         MyApplication.getApplication().getAppComponent().inject(this);
         disposables = new CompositeDisposable();
         adapter.set(new MainAdapter());
-    }
-
-    @Bindable
-    public boolean isEmpty() {
-        return adapter.get().getItemCount() == 0;
     }
 
     public void start() {
@@ -96,6 +90,6 @@ public class MainFragViewModel extends BaseObservable {
 
     private void onDataChanged() {
         dataLoading.set(false);
-        notifyPropertyChanged(BR.empty);
+        showEmptyMessage.set(adapter.get().getItemCount() == 0);
     }
 }
